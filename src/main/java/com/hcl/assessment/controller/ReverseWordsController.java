@@ -26,7 +26,4 @@ public class ReverseWordsController {
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).header("Pragma", "no-cache")
 				.body(ReverseWordsUtils.reverseWords(sentence));
 	}
-	
-	
-
 }
