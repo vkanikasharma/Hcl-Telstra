@@ -1,5 +1,9 @@
 package com.hcl.assessment.controller.utils;
-
+/**
+ * Utility class to find type of triangle.
+ * @author kanika.sharma
+ *
+ */
 public class TriangleTypesUtils {
 	
 	public static final String EQUILATERAL = "Equilateral";
@@ -28,10 +32,10 @@ public class TriangleTypesUtils {
 		}else if(a>=(b+c) || c>=(b+a) || b>=(a+c)){//if one side is less than sum of other two sides
 			return NOT_A_TRIANGLE;
 		}
-        else if ((a==b && b!=c) || (a!=b && c==a) || (c==b && c!=a)){//two sides are equal
+        else if ((a==b && b!=c) || (b==c && c!=a)){//two sides are equal
             return ISOSCELES;
         }   
-        else if(a!=b && b!=c && c!=a){//none of the sides are equal
+        else if(a!=b && b!=c){//none of the sides are equal
             return SCALENE;
         }
         
