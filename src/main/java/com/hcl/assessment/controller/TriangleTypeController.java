@@ -9,7 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.assessment.controller.exception.InvalidInputException;
 import com.hcl.assessment.controller.utils.TriangleTypesUtils;
-
+/**
+ * This class will expose a get api which will take sides of a triangle as input.
+ * In response, based on the length of sides, type of triangle will be returned.
+ * @author kanika.sharma
+ *
+ */
 @RestController
 public class TriangleTypeController {
 	
