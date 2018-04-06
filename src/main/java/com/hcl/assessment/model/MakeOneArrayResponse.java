@@ -1,7 +1,11 @@
 package com.hcl.assessment.model;
-
+/**
+ * Model class sent as response for MakeOneArray API.
+ * @author kanika.sharma
+ *
+ */
 public class MakeOneArrayResponse {
-	
+	//name of output array
 	Integer[] Array;
 
 	/**
