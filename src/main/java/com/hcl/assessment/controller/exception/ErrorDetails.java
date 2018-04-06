@@ -1,7 +1,11 @@
 package com.hcl.assessment.controller.exception;
 
 import java.util.Date;
-
+/**
+ * Class used for error details in case of exceptions.
+ * @author kanika.sharma
+ *
+ */
 public class ErrorDetails {
 	  private Date timestamp;
 	  private String message;
