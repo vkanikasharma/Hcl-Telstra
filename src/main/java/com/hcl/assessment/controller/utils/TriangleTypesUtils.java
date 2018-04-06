@@ -8,6 +8,13 @@ public class TriangleTypesUtils {
 	public static final String NOT_A_TRIANGLE = "Not a triangle";
 	
 	/**
+	 * private constructor
+	 */
+	private TriangleTypesUtils(){
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
 	 * This method finds the triangle type by comparing its sides.
 	 * @param a
 	 * @param b
