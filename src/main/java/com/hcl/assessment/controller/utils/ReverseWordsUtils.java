@@ -12,6 +12,13 @@ public class ReverseWordsUtils {
 	public static final String SPACE = " ";
 	
 	/**
+	 * private constructor
+	 */
+	private ReverseWordsUtils(){
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
 	 * This method will take a sentence as in[ut and reverse all the words in the sentence.
 	 * @param sentence
 	 * @return
