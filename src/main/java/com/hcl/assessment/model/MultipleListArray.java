@@ -2,13 +2,17 @@ package com.hcl.assessment.model;
 
 public class MultipleListArray {
 	
-	private Integer[] Array1;
-	private Integer[] Array2;
-	private Integer[] Array3;
+	private Integer[] array1;
+	private Integer[] array2;
+	private Integer[] array3;
 	
 	
-	
-	public MultipleListArray() {}
+	/**
+	 * default constructor
+	 */
+	public MultipleListArray() {
+		super(); 
+	}
 
 
 
@@ -16,7 +20,7 @@ public class MultipleListArray {
 	 * @return the array1
 	 */
 	public Integer[] getArray1() {
-		return Array1;
+		return array1;
 	}
 
 
@@ -25,16 +29,15 @@ public class MultipleListArray {
 	 * @param array1 the array1 to set
 	 */
 	public void setArray1(Integer[] array1) {
-		Array1 = array1;
+		this.array1 = array1;
 	}
 
-
-
+	
 	/**
 	 * @return the array2
 	 */
 	public Integer[] getArray2() {
-		return Array2;
+		return array2;
 	}
 
 
@@ -43,7 +46,7 @@ public class MultipleListArray {
 	 * @param array2 the array2 to set
 	 */
 	public void setArray2(Integer[] array2) {
-		Array2 = array2;
+		this.array2 = array2;
 	}
 
 
@@ -52,7 +55,7 @@ public class MultipleListArray {
 	 * @return the array3
 	 */
 	public Integer[] getArray3() {
-		return Array3;
+		return array3;
 	}
 
 
@@ -61,7 +64,7 @@ public class MultipleListArray {
 	 * @param array3 the array3 to set
 	 */
 	public void setArray3(Integer[] array3) {
-		Array3 = array3;
+		this.array3 = array3;
 	}
 
 	
