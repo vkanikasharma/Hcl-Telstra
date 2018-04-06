@@ -10,6 +10,13 @@ import com.hcl.assessment.model.MultipleListArray;
 public class MakeOneArrayUtils {
 	
 	/**
+	 * private constructor
+	 */
+	private MakeOneArrayUtils(){
+		throw new UnsupportedOperationException();
+	}
+	
+	/**
 	 * This method takes Multiple arrays as input and returns combined array.
 	 * @param multipleArrayList
 	 * @return
