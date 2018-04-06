@@ -6,7 +6,12 @@ import java.util.List;
 
 import com.hcl.assessment.model.MakeOneArrayResponse;
 import com.hcl.assessment.model.MultipleListArray;
-
+/**
+ * Utility class to combine multiple arrays and return one array as response.
+ * The returned array will be sorted (ascending order and will not contain any duplicates).
+ * @author kanika.sharma
+ *
+ */
 public class MakeOneArrayUtils {
 	
 	/**
