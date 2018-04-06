@@ -5,6 +5,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
 
 import org.junit.Test;
@@ -19,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.hcl.assessment.model.MultipleListArray;
+import com.jayway.jsonpath.internal.Utils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -76,6 +79,19 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 		assertNotNull(multiArray.getArray3());
 		
 		
+	}
+	
+	@Test
+	public//
+	void privateConstructorTest() throws Exception {
+	    final Constructor<?>[] constructors = Utils.class.getDeclaredConstructors();
+	    // check that all constructors are 'private':
+	    for (final Constructor<?> constructor : constructors) {
+	        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+	    }        
+	    // call the private constructor:
+	    constructors[0].setAccessible(true);
+	    constructors[0].newInstance((Object[]) null);
 	}
 	
 	
