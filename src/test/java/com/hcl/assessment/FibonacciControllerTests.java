@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.hcl.assessment.controller.FibonacciController;
+import com.hcl.assessment.controller.exception.InvalidInputException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -40,13 +41,23 @@ public class FibonacciControllerTests {
 		
 	}
 	
+	@Test
+    public void testFibonacciApiInvalid() throws Exception {
+       try{
+		controller.getNthFibonacciSequence(new String("abc"));
+       }catch(InvalidInputException e){
+    	   
+       }
+		
+	}
+	
 	
 	@Test
     public void testNthSequence() throws Exception {
        mockMvc
             .perform(get("/api/Fibonacci").param("n", "10"))
             .andExpect(status().isOk())
-            .andExpect(content().json("34"));
+            .andExpect(content().json("55"));
 
 	}
 	
@@ -66,5 +77,11 @@ public class FibonacciControllerTests {
 
 	}
 	
+	@Test
+    public void testInvalidInputObject() throws Exception {
+       mockMvc
+            .perform(get("/api/Fibonacci").param("n", new String("abc")))
+            .andExpect(status().is(400));
 
+	}
 }
