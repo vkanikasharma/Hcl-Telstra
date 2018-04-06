@@ -1,7 +1,5 @@
 package com.hcl.assessment.controller;
 
-import java.util.Objects;
-
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +20,21 @@ public class FibonacciController {
 	
 	
 	@GetMapping("/api/Fibonacci")
-	public ResponseEntity<Object> getNthFibonacciSequence(@RequestParam Long n){
-		
-		if(Objects.isNull(n) || n<0){//check for null and negative values.
-			throw new InvalidInputException();
-			
+	public ResponseEntity<Object> getNthFibonacciSequence(@RequestParam Object n){
+		try{
+			//Casting Object into Long to check input
+			Long input = new Long(n.toString());
+			if(input<0){//check for negative values.
+				throw new InvalidInputException("Invalid Input: Input negative.Please pass numeric value to get proper result");
+				
+			}
+		}catch(NumberFormatException nfe){
+			throw new InvalidInputException("Invalid Input: Please pass numeric value to get proper result.");
 		}
 		
+		
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).header("Pragma", "no-cache")
-				.body(FibonacciSequenceUtils.claculateNthSequence(n));
+				.body(FibonacciSequenceUtils.claculateNthSequence((new Long(n.toString()))));
 	}
 	
 	
