@@ -1,10 +1,14 @@
 package com.hcl.assessment.model;
-
+/**
+ * Model class received as request for MakeOneArray api. 
+ * @author kanika.sharma
+ *
+ */
 public class MultipleListArray {
 	
-	private Integer[] array1;
-	private Integer[] array2;
-	private Integer[] array3;
+	private Integer[] array1;//first array
+	private Integer[] array2;//second array
+	private Integer[] array3;//third array
 	
 	
 	/**
