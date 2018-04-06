@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.assessment.controller.exception.InvalidInputException;
 import com.hcl.assessment.controller.utils.ReverseWordsUtils;
-
+/**
+ * This class will expose a get api which will take a sentence as input.
+ * In response, it will return the sentence with all words in reverse.
+ * @author kanika.sharma
+ *
+ */
 @RestController
 public class ReverseWordsController {
 	
@@ -26,4 +31,7 @@ public class ReverseWordsController {
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(CacheControl.noCache()).header("Pragma", "no-cache")
 				.body(ReverseWordsUtils.reverseWords(sentence));
 	}
+	
+	
+
 }
