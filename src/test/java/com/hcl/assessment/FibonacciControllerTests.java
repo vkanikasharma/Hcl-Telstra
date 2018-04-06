@@ -1,8 +1,12 @@
 package com.hcl.assessment;
 
+import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Modifier;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.hcl.assessment.controller.FibonacciController;
 import com.hcl.assessment.controller.exception.InvalidInputException;
+import com.jayway.jsonpath.internal.Utils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -84,4 +89,19 @@ public class FibonacciControllerTests {
             .andExpect(status().is(400));
 
 	}
+		
+	@Test
+	public//
+	void privateConstructorTest() throws Exception {
+	    final Constructor<?>[] constructors = Utils.class.getDeclaredConstructors();
+	    // check that all constructors are 'private':
+	    for (final Constructor<?> constructor : constructors) {
+	        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
+	    }        
+	    // call the private constructor:
+	    constructors[0].setAccessible(true);
+	    constructors[0].newInstance((Object[]) null);
+	}	
+
+	
 }
