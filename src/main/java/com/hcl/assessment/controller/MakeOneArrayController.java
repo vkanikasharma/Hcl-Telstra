@@ -22,6 +22,5 @@ public class MakeOneArrayController {
 				.body(MakeOneArrayUtils.createAndSortAllArrays(multipleList));
 	}
 	
-	
 }
 
