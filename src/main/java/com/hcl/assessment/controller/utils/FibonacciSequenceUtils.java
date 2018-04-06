@@ -6,6 +6,12 @@ package com.hcl.assessment.controller.utils;
  *
  */
 public class FibonacciSequenceUtils {
+	/**
+	 * private constructor
+	 */
+	private FibonacciSequenceUtils(){
+		throw new UnsupportedOperationException();
+	}
 	
 	/**
 	 * This method finds and returns the nth number in Fibonacci series. Its a
