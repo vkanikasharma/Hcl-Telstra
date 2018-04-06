@@ -17,7 +17,7 @@ public class ReverseWordsUtils {
 	 * @return
 	 */
 	public static String reverseWords(String sentence){
-		StringBuffer reversedSentence = new StringBuffer();
+		StringBuilder reversedSentence = new StringBuilder();
 		Pattern pattern = Pattern.compile("\\s");
 		
 		if(sentence!=null && sentence.length()>0){//check for null and empty
