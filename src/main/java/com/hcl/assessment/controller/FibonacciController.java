@@ -24,8 +24,8 @@ public class FibonacciController {
 		try{
 			//Casting Object into Long to check input
 			Long input = new Long(n.toString());
-			if(input<0){//check for negative values.
-				throw new InvalidInputException("Invalid Input: Input negative.Please pass numeric value to get proper result");
+			if(input<=0){//check for negative values.
+				throw new InvalidInputException("Invalid Input: Input either zero or negative.Please pass numeric value to get proper result");
 				
 			}
 		}catch(NumberFormatException nfe){
