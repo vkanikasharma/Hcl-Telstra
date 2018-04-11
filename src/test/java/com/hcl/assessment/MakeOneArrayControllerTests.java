@@ -1,5 +1,6 @@
 package com.hcl.assessment;
 
+
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -23,6 +24,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.hcl.assessment.model.MultipleListArray;
 import com.jayway.jsonpath.internal.Utils;
 
+
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
@@ -39,6 +42,12 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 
 	private String jsonRequest = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[3,4,5,6]," + "\"array3\":[6,1,3,11]" +"}";
 	private String oneEmptyArray = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[]," + "\"array3\":[6,1,3,11]" +"}";
+	private String oneNullArray = "{" + "\"array1\":[1,2,3,4]," + "\"array3\":[6,1,3,11]" +"}";
+	
+	private String allArrays = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[3,4,5,6]," + "\"array3\":[6,1,3,11]," 
+			+ "\"array4\":[9,8,7]," + "\"array5\":[11,10]," + "\"array6\":[50,35]," +  "\"array7\":[100,98]," + "\"array8\":[12]," +
+			"\"array9\":[15,14]," + "\"array10\":[3,4,5,3,5,6]" +
+			"}";
 	
 	private String jsonResponse = "{" + "\"array\":[1,2,3,4,5,6,11]" +"}";
 	private String oneEmptyArrayResponse = "{" + "\"array\":[1,2,3,4,6,11]" +"}";
@@ -52,10 +61,34 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 	}
 	
 	@Test
+    public void testWithAllArrays() throws Exception {
+       mockMvc
+            .perform(post("/api/makeonearray").contentType(APPLICATION_JSON_UTF8).content(allArrays))
+            .andExpect(status().is(200));
+
+	}
+	
+	@Test
     public void testWithOneEmptyArray() throws Exception {
        mockMvc
             .perform(post("/api/makeonearray").contentType(APPLICATION_JSON_UTF8).content(oneEmptyArray))
             .andExpect(status().is(200)).andExpect(content().json(oneEmptyArrayResponse));
+
+	}
+	
+	@Test
+    public void testWithOneNullArray() throws Exception {
+       mockMvc
+            .perform(post("/api/makeonearray").contentType(APPLICATION_JSON_UTF8).content(oneNullArray))
+            .andExpect(status().is(200));
+
+	}
+	
+	@Test
+    public void testWithNullArray() throws Exception {
+       mockMvc
+            .perform(post("/api/makeonearray").contentType(APPLICATION_JSON_UTF8).content(""))
+            .andExpect(status().is(400));
 
 	}
 	
