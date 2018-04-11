@@ -40,8 +40,8 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
         Charset.forName("utf8")                     
         );
 
-	private String jsonRequest = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[3,4,5,6]," + "\"array3\":[6,1,3,11]" +"}";
-	private String oneEmptyArray = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[]," + "\"array3\":[6,1,3,11]" +"}";
+	private String jsonRequest = "{" + "\"Array1\":[1,2,3,4]," + "\"Array2\":[3,4,5,6]," + "\"Array3\":[6,1,3,11]" +"}";
+	private String oneEmptyArray = "{" + "\"Array1\":[1,2,3,4]," + "\"Array2\":[]," + "\"Array3\":[6,1,3,11]" +"}";
 	private String oneNullArray = "{" + "\"array1\":[1,2,3,4]," + "\"array3\":[6,1,3,11]" +"}";
 	
 	private String allArrays = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[3,4,5,6]," + "\"array3\":[6,1,3,11]," 
