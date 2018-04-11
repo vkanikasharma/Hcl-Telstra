@@ -1,4 +1,7 @@
 package com.hcl.assessment.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Model class received as request for MakeOneArray api. 
  * Supports upto 10 arrays.
@@ -31,6 +34,7 @@ public class MultipleListArray {
 	/**
 	 * @param array4 the array4 to set
 	 */
+	@JsonProperty("Array4")
 	public void setArray4(Integer[] array4) {
 		this.array4 = array4;
 	}
@@ -40,6 +44,7 @@ public class MultipleListArray {
 	/**
 	 * @return the array5
 	 */
+	
 	public Integer[] getArray5() {
 		return array5;
 	}
@@ -49,6 +54,7 @@ public class MultipleListArray {
 	/**
 	 * @param array5 the array5 to set
 	 */
+	@JsonProperty("Array5")
 	public void setArray5(Integer[] array5) {
 		this.array5 = array5;
 	}
@@ -67,6 +73,7 @@ public class MultipleListArray {
 	/**
 	 * @param array6 the array6 to set
 	 */
+	@JsonProperty("Array6")
 	public void setArray6(Integer[] array6) {
 		this.array6 = array6;
 	}
@@ -85,6 +92,7 @@ public class MultipleListArray {
 	/**
 	 * @param array7 the array7 to set
 	 */
+	@JsonProperty("Array7")
 	public void setArray7(Integer[] array7) {
 		this.array7 = array7;
 	}
@@ -94,6 +102,7 @@ public class MultipleListArray {
 	/**
 	 * @return the array8
 	 */
+	
 	public Integer[] getArray8() {
 		return array8;
 	}
@@ -103,6 +112,7 @@ public class MultipleListArray {
 	/**
 	 * @param array8 the array8 to set
 	 */
+	@JsonProperty("Array8")
 	public void setArray8(Integer[] array8) {
 		this.array8 = array8;
 	}
@@ -121,6 +131,7 @@ public class MultipleListArray {
 	/**
 	 * @param array9 the array9 to set
 	 */
+	@JsonProperty("Array9")
 	public void setArray9(Integer[] array9) {
 		this.array9 = array9;
 	}
@@ -139,6 +150,7 @@ public class MultipleListArray {
 	/**
 	 * @param array10 the array10 to set
 	 */
+	@JsonProperty("Array10")
 	public void setArray10(Integer[] array10) {
 		this.array10 = array10;
 	}
@@ -157,6 +169,7 @@ public class MultipleListArray {
 	/**
 	 * @return the array1
 	 */
+	@JsonProperty("array1")
 	public Integer[] getArray1() {
 		return array1;
 	}
@@ -166,6 +179,7 @@ public class MultipleListArray {
 	/**
 	 * @param array1 the array1 to set
 	 */
+	@JsonProperty("Array1")
 	public void setArray1(Integer[] array1) {
 		this.array1 = array1;
 	}
@@ -183,6 +197,7 @@ public class MultipleListArray {
 	/**
 	 * @param array2 the array2 to set
 	 */
+	@JsonProperty("Array2")
 	public void setArray2(Integer[] array2) {
 		this.array2 = array2;
 	}
@@ -201,6 +216,7 @@ public class MultipleListArray {
 	/**
 	 * @param array3 the array3 to set
 	 */
+	@JsonProperty("Array3")
 	public void setArray3(Integer[] array3) {
 		this.array3 = array3;
 	}
