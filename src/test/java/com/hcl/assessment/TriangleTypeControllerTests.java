@@ -92,9 +92,25 @@ public class TriangleTypeControllerTests {
 	}
 	
 	@Test
-    public void testNegativeInput() throws Exception {
+    public void testNegativeInputForA() throws Exception {
        mockMvc
-            .perform(get("/api/TriangleType").param("a", "-1").param("b", "-1").param("c", "-1"))
+            .perform(get("/api/TriangleType").param("a", "-1").param("b", "1").param("c", "2"))
+            .andExpect(status().is(400));
+
+	}
+	
+	@Test
+    public void testNegativeInputForB() throws Exception {
+       mockMvc
+            .perform(get("/api/TriangleType").param("a", "2").param("b", "-1").param("c", "2"))
+            .andExpect(status().is(400));
+
+	}
+	
+	@Test
+    public void testNegativeInputForC() throws Exception {
+       mockMvc
+            .perform(get("/api/TriangleType").param("a", "2").param("b", "1").param("c", "-2"))
             .andExpect(status().is(400));
 
 	}
