@@ -1,6 +1,7 @@
 package com.hcl.assessment.controller.utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class MakeOneArrayUtils {
 	 * @return
 	 */
 	
-	public static MakeOneArrayResponse createAndSortAllArrays(MultipleListArray multipleArrayList){
+	public static String createAndSortAllArrays(MultipleListArray multipleArrayList){
 		List<Integer> result = new ArrayList<>();
 		MakeOneArrayResponse response = new MakeOneArrayResponse();
 		
@@ -46,7 +47,8 @@ public class MakeOneArrayUtils {
 		Collections.sort(result);//sort the array in ascending order
 		
 		response.setArray(result.toArray(new Integer[result.size()]));
-		return response;
+		
+		return "{" + "\"Array\": "+Arrays.deepToString(response.getArray())+"}";
 		
 	}
 	
