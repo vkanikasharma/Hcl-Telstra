@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.hcl.assessment.model.MakeOneArrayResponse;
 import com.hcl.assessment.model.MultipleListArray;
 
 /**
@@ -31,9 +30,7 @@ public class MakeOneArrayUtils {
 	
 	public static String createAndSortAllArrays(MultipleListArray multipleArrayList){
 		List<Integer> result = new ArrayList<>();
-		MakeOneArrayResponse response = new MakeOneArrayResponse();
-		
-		
+	
 		//size will now give total size of combined array
 		Integer[] oneArray = new Integer[getCombinedSize(multipleArrayList)];
 		
@@ -46,9 +43,8 @@ public class MakeOneArrayUtils {
 		}
 		Collections.sort(result);//sort the array in ascending order
 		
-		response.setArray(result.toArray(new Integer[result.size()]));
 		
-		return "{" + "\"Array\": "+Arrays.deepToString(response.getArray())+"}";
+		return "{" + "\"Array\": "+Arrays.deepToString(result.toArray(new Integer[result.size()]))+"}";
 		
 	}
 	
