@@ -27,15 +27,12 @@ public class ReverseWordsUtils {
 		StringBuilder reversedSentence = new StringBuilder();
 		Pattern pattern = Pattern.compile("\\s");
 		
-		if(sentence!=null && sentence.length()>0){//check for null and empty
-			String[] words = pattern.split(sentence);
+		String[] words = pattern.split(sentence);
 			
-			for(String word: words){
-				reversedSentence.append((new StringBuilder(word)).reverse().toString())
-				.append(SPACE);
-			}
+		for(String word: words){
+			reversedSentence.append((new StringBuilder(word)).reverse().toString())
+			.append(SPACE);
 		}
-		
 		return reversedSentence.toString().trim();
 	}
 	
