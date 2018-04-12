@@ -44,9 +44,9 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 	private String oneEmptyArray = "{" + "\"Array1\":[1,2,3,4]," + "\"Array2\":[]," + "\"Array3\":[6,1,3,11]" +"}";
 	private String oneNullArray = "{" + "\"array1\":[1,2,3,4]," + "\"array3\":[6,1,3,11]" +"}";
 	
-	private String allArrays = "{" + "\"array1\":[1,2,3,4]," + "\"array2\":[3,4,5,6]," + "\"array3\":[6,1,3,11]," 
-			+ "\"array4\":[9,8,7]," + "\"array5\":[11,10]," + "\"array6\":[50,35]," +  "\"array7\":[100,98]," + "\"array8\":[12]," +
-			"\"array9\":[15,14]," + "\"array10\":[3,4,5,3,5,6]" +
+	private String allArrays = "{" + "\"Array1\":[1,2,3,4]," + "\"Array2\":[3,4,5,6]," + "\"Array3\":[6,1,3,11]," 
+			+ "\"Array4\":[9,8,7]," + "\"Array5\":[11,10]," + "\"Array6\":[50,35]," +  "\"Array7\":[100,98]," + "\"Array8\":[12]," +
+			"\"Array9\":[15,14]," + "\"Array10\":[3,4,5,3,5,6]" +
 			"}";
 	
 	private String jsonResponse = "{" + "\"array\":[1,2,3,4,5,6,11]" +"}";
@@ -106,10 +106,24 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 		multiArray.setArray1(new Integer[]{1,2,3,4});
 		multiArray.setArray2(new Integer[]{5,6,7});
 		multiArray.setArray3(new Integer[]{9,10,11});
+		multiArray.setArray4(new Integer[]{1,2,3,4});
+		multiArray.setArray5(new Integer[]{5,6,7});
+		multiArray.setArray6(new Integer[]{9,10,11});
+		multiArray.setArray7(new Integer[]{1,2,3,4});
+		multiArray.setArray8(new Integer[]{5,6,7});
+		multiArray.setArray9(new Integer[]{9,10,11});
+		multiArray.setArray10(new Integer[]{15});
 		
 		assertNotNull(multiArray.getArray1());
 		assertNotNull(multiArray.getArray2());
 		assertNotNull(multiArray.getArray3());
+		assertNotNull(multiArray.getArray4());
+		assertNotNull(multiArray.getArray5());
+		assertNotNull(multiArray.getArray6());
+		assertNotNull(multiArray.getArray7());
+		assertNotNull(multiArray.getArray8());
+		assertNotNull(multiArray.getArray9());
+		assertNotNull(multiArray.getArray10());
 		
 		
 	}
