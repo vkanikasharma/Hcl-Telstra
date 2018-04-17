@@ -1,7 +1,7 @@
 package com.hcl.assessment;
 
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -21,7 +21,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.hcl.assessment.model.MultipleListArray;
 import com.jayway.jsonpath.internal.Utils;
 
 
@@ -100,33 +99,6 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 
 	}
 	
-	@Test
-	public void testMultipleListArray(){
-		MultipleListArray multiArray = new MultipleListArray();
-		multiArray.setArray1(new Integer[]{1,2,3,4});
-		multiArray.setArray2(new Integer[]{5,6,7});
-		multiArray.setArray3(new Integer[]{9,10,11});
-		multiArray.setArray4(new Integer[]{1,2,3,4});
-		multiArray.setArray5(new Integer[]{5,6,7});
-		multiArray.setArray6(new Integer[]{9,10,11});
-		multiArray.setArray7(new Integer[]{1,2,3,4});
-		multiArray.setArray8(new Integer[]{5,6,7});
-		multiArray.setArray9(new Integer[]{9,10,11});
-		multiArray.setArray10(new Integer[]{15});
-		
-		assertNotNull(multiArray.getArray1());
-		assertNotNull(multiArray.getArray2());
-		assertNotNull(multiArray.getArray3());
-		assertNotNull(multiArray.getArray4());
-		assertNotNull(multiArray.getArray5());
-		assertNotNull(multiArray.getArray6());
-		assertNotNull(multiArray.getArray7());
-		assertNotNull(multiArray.getArray8());
-		assertNotNull(multiArray.getArray9());
-		assertNotNull(multiArray.getArray10());
-		
-		
-	}
 	
 	@Test
 	public//
