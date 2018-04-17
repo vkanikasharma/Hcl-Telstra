@@ -23,11 +23,11 @@ import io.swagger.annotations.ApiResponses;
  *
  */
 @RestController
-@Api(value="FibonacciSeries", description="Operation to calculate the nth sequence in Fibonacci series")
+@Api(value="FibonacciSeries")
 public class FibonacciController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FibonacciController.class);
 	
-	@ApiOperation(value = "Returns the nth sequence in Fibonacci series", response = Integer.class)
+	@ApiOperation(value = "Returns the nth sequence in Fibonacci series", notes="Operation to calculate the nth sequence in Fibonacci series", response = Integer.class)
 	@ApiResponses(value = {
 	        @ApiResponse(code = 200, message = "Successfully retrieved Fibonacci sequence"),
 	        @ApiResponse(code = 400, message = "Invalid Input: Please pass numeric value to get proper result.")
