@@ -20,11 +20,11 @@ import io.swagger.annotations.ApiResponses;
  * @author kanika.sharma
  *
  */
-@Api(value="TriangleTypes", description="Operation to find triangle type given its sides")
+@Api(value="TriangleTypes")
 @RestController
 public class TriangleTypeController {
 	
-	@ApiOperation(value = "Finds triangle type from its sides", response = TriangleTypesUtils.TriangleType.class)
+	@ApiOperation(value = "Finds triangle type from its sides", notes="Operation to find triangle type given its sides", response = TriangleTypesUtils.TriangleType.class)
 	@ApiResponses(value = {
 	        @ApiResponse(code = 200, message = "Operation Successful"),
 	        @ApiResponse(code = 400, message = "Invalid Input: Please pass numeric value to get proper result.")
