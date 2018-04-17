@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiResponses;
  * @author kanika.sharma
  *
  */
-@Api(value="MakeOneArray", description="Operation to all arrays into one while avoiding duplicates and maintaining order.")
+@Api(value="MakeOneArray")
 @RestController
 public class MakeOneArrayController {
 	public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(),
@@ -34,7 +34,7 @@ public class MakeOneArrayController {
             Charset.forName("utf8")                     
             );
 	
-	@ApiOperation(value = "Combines all arrays into one", response = String.class)
+	@ApiOperation(value = "Combines all arrays into one", notes="Operation to all arrays into one while avoiding duplicates and maintaining order.", response = String.class)
 	@ApiResponses(value = {
 	        @ApiResponse(code = 201, message = "Operation Successful")
 	}
