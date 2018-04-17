@@ -52,7 +52,7 @@ public class TriangleTypeControllerTests {
        mockMvc
             .perform(get("/api/TriangleType").param("a", "1").param("b", "1").param("c", "1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(TriangleTypesUtils.EQUILATERAL));
+            .andExpect(content().string(TriangleTypesUtils.TriangleType.Equilateral.toString()));
 
 	}
 	
@@ -61,7 +61,7 @@ public class TriangleTypeControllerTests {
        mockMvc
             .perform(get("/api/TriangleType").param("a", "2").param("b", "2").param("c", "1"))
             .andExpect(status().isOk())
-            .andExpect(content().string(TriangleTypesUtils.ISOSCELES));
+            .andExpect(content().string(TriangleTypesUtils.TriangleType.Isosceles.name()));
 
 	}
 	
@@ -70,7 +70,7 @@ public class TriangleTypeControllerTests {
        mockMvc
             .perform(get("/api/TriangleType").param("a", "2").param("b", "3").param("c", "4"))
             .andExpect(status().isOk())
-            .andExpect(content().string(TriangleTypesUtils.SCALENE));
+            .andExpect(content().string(TriangleTypesUtils.TriangleType.Scalene.name()));
 
 	}
 	
