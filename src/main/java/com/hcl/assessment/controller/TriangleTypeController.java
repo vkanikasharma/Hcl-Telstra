@@ -9,15 +9,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.assessment.controller.exception.InvalidInputException;
 import com.hcl.assessment.controller.utils.TriangleTypesUtils;
+
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 /**
  * This class will expose a get api which will take sides of a triangle as input.
  * In response, based on the length of sides, type of triangle will be returned.
  * @author kanika.sharma
  *
  */
+@Api(value="TriangleTypes", description="Operation to find triangle type given its sides")
 @RestController
 public class TriangleTypeController {
 	
+	@ApiOperation(value = "Finds triangle type from its sides", response = TriangleTypesUtils.TriangleType.class)
+	@ApiResponses(value = {
+	        @ApiResponse(code = 200, message = "Operation Successful"),
+	        @ApiResponse(code = 400, message = "Invalid Input: Please pass numeric value to get proper result.")
+	}
+	)
 	@GetMapping("/api/TriangleType")
 	public ResponseEntity<Object> getTriangleType(@RequestParam Object a, @RequestParam Object b, @RequestParam Object c){
 		
@@ -34,7 +46,7 @@ public class TriangleTypeController {
 				
 			}
 		}catch(NumberFormatException nfe){
-			throw new InvalidInputException("Invalid Input: Please pass numeric value to get proper result.");
+			throw new InvalidInputException("Invalid Input: Please pass numeric value to get proper result");
 		}
 		
 		
