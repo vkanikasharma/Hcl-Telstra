@@ -22,11 +22,11 @@ import io.swagger.annotations.ApiResponses;
  * @author kanika.sharma
  *
  */
-@Api(value="ReverseWords", description="Operation to reverse words in a sentence")
+@Api(value="ReverseWords")
 @RestController
 public class ReverseWordsController {
 	
-	@ApiOperation(value = "Reverses the words of sentence", response = String.class)
+	@ApiOperation(value = "Reverses the words of sentence", notes="Operation to reverse words in a sentence", response = String.class)
 	@ApiResponses(value = {
 	        @ApiResponse(code = 200, message = "Operation Successful"),
 	        @ApiResponse(code = 400, message = "Invalid Input: Either null or empty string")
