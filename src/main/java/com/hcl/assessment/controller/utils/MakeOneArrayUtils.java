@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
  */
 public class MakeOneArrayUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(MakeOneArrayUtils.class);
+	private static org.slf4j.Marker marker;
 	/**
 	 * private constructor
 	 */
@@ -31,9 +32,9 @@ public class MakeOneArrayUtils {
 	 */
 	
 	public static String createAndSortAllArrays(Map<String, List<Integer>> multipleArrayList){
-		LOGGER.info("Inside createAndSortAllArrays()");
+		LOGGER.info(marker, "IN: createAndSortAllArrays() {}","");
 		List<Integer> result = new ArrayList<>();
-	
+		LOGGER.info(marker, "createAndSortAllArrays(): Traversing through all arrays to combine into one array {}","");
 		//form the result array without duplicates.
 		for(List<Integer> list: multipleArrayList.values()){
 			for(Integer i: list){
@@ -42,9 +43,10 @@ public class MakeOneArrayUtils {
 				}
 			}
 		}
+		LOGGER.info(marker, "createAndSortAllArrays(): Sorting (ascending) the combined array {}","");
 		Collections.sort(result);//sort the array in ascending order
 		String response = "{" + "\"Array\": "+Arrays.deepToString(result.toArray(new Integer[result.size()]))+"}";
-		LOGGER.debug("MakeOneArray response: "+response);
+		LOGGER.debug(marker, "createAndSortAllArrays(): MakeOneArray response: {}",response);
 		
 		return response;
 		
