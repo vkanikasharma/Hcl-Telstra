@@ -1,6 +1,7 @@
 package com.hcl.assessment.controller.utils;
 
-import java.util.regex.Pattern;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ReverseWordsUtils {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ReverseWordsUtils.class);
+	private static org.slf4j.Marker marker;
 	public static final String SPACE = " ";
 	
 	/**
@@ -21,25 +23,41 @@ public class ReverseWordsUtils {
 		throw new UnsupportedOperationException();
 	}
 	
+	/**  
+	* This method will reverse words in a given string with maintaining 
+	* special characters in place. 
+	* @param sentence  
+	* @return reversedSentence
+	*/ 
+	
+	public static String reverseWords(String sentence) { 
+		LOGGER.info(marker, "IN: reverseWords() {}",""); 	
+		LOGGER.debug(marker, "reverseWords(): Reverse words of input: {}",sentence);
+		
+	    StringBuilder reversedSentence = new StringBuilder();
+	    Deque<Character> deque = new ArrayDeque<>();//provides LIFO operations
+	    for(int i=0; i<sentence.length();i++){
+	        char c = sentence.charAt(i);
+	        if(!isAlphabet(c)){//if not an alphabet
+	             while(!deque.isEmpty()){
+	            	 reversedSentence.append(deque.pop());//return the first element of deque
+	             }
+	             reversedSentence.append(c);
+	            }else{
+	            	deque.push(c);//push c to head of deque
+	            }
+	            }
+	    		LOGGER.debug(marker, "reverseWords(): Output: {}",reversedSentence);
+	            return reversedSentence.toString();
+	}   
+	
 	/**
-	 * This method will take a sentence as input and reverse all the words in the sentence.
-	 * @param sentence
+	 * Method to check whether a character is et or not.
+	 * @param ch
 	 * @return
 	 */
-	public static String reverseWords(String sentence){
-		LOGGER.info("Inside reverseWords()");
-		LOGGER.debug("Reverse words for sentence: "+sentence);
-		StringBuilder reversedSentence = new StringBuilder();
-		Pattern pattern = Pattern.compile("\\s");
-		
-		String[] words = pattern.split(sentence);
-			
-		for(String word: words){
-			reversedSentence.append((new StringBuilder(word)).reverse().toString())
-			.append(SPACE);
-		}
-		LOGGER.debug("Reverse words output: "+reversedSentence.toString().trim());
-		return reversedSentence.toString().trim();
+	private static boolean isAlphabet(char ch){
+		return ((ch >='a' && ch<='z') || (ch >='A' && ch <='Z'));
 	}
 	
 }
