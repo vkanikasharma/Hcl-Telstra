@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 
 import org.junit.Test;
@@ -20,7 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.hcl.assessment.controller.ReverseWordsController;
-import com.jayway.jsonpath.internal.Utils;
+import com.hcl.assessment.controller.utils.ReverseWordsUtils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -31,8 +32,8 @@ public class ReverseWordsControllerTests {
 	
 @Autowired private MockMvc mockMvc;
 	
-	private String sentence = "how are you";
-	private String mockResponse = "woh era uoy";
+	private String sentence = "how are you?";
+	private String mockResponse = "woh era uoy?";
 	
 	@Autowired
 	private ReverseWordsController controller;
@@ -53,7 +54,13 @@ public class ReverseWordsControllerTests {
             .perform(get("/api/ReverseWords").param("sentence", sentence))
             .andExpect(status().isOk())
             .andExpect(content().string(mockResponse));
-
+	} 
+      @Test
+      public void testSpecialCharacters() throws Exception {
+          mockMvc
+               .perform(get("/api/ReverseWords").param("sentence", "Hello! Is all well?"))
+               .andExpect(status().isOk())
+               .andExpect(content().string("olleH! sI lla llew?"));  
 	}
 	
 	@Test
@@ -66,15 +73,28 @@ public class ReverseWordsControllerTests {
 	
 	@Test
 	public//
-	void privateConstructorTest() throws Exception {
-	    final Constructor<?>[] constructors = Utils.class.getDeclaredConstructors();
+	void privateConstructorTest()  {
+	    final Constructor<?>[] constructors = ReverseWordsUtils.class.getDeclaredConstructors();
 	    // check that all constructors are 'private':
 	    for (final Constructor<?> constructor : constructors) {
 	        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 	    }        
 	    // call the private constructor:
 	    constructors[0].setAccessible(true);
-	    constructors[0].newInstance((Object[]) null);
+	    try {
+			constructors[0].newInstance((Object[]) null);
+		} catch (InstantiationException e) {
+			
+		} catch (IllegalAccessException e) {
+			
+		} catch (IllegalArgumentException e) {
+			
+		} catch (InvocationTargetException e) {
+			
+		} catch(UnsupportedOperationException e){
+		
+		}
+	    
 	}
 
 }
