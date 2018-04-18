@@ -1,5 +1,7 @@
 package com.hcl.assessment.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hcl.assessment.controller.exception.ErrorMessages;
 import com.hcl.assessment.controller.exception.InvalidInputException;
 import com.hcl.assessment.controller.utils.TriangleTypesUtils;
 
@@ -23,16 +26,17 @@ import io.swagger.annotations.ApiResponses;
 @Api(value="TriangleTypes")
 @RestController
 public class TriangleTypeController {
-	
-	@ApiOperation(value = "Finds triangle type from its sides", notes="Operation to find triangle type given its sides", response = TriangleTypesUtils.TriangleType.class)
+	private static final Logger LOGGER = LoggerFactory.getLogger(TriangleTypeController.class);
+	private static org.slf4j.Marker marker;	
+	@ApiOperation(value = "Returns the type of triangle given the lengths of its sides.", notes="Returns the type of triangle given the lengths of its sides", response = String.class)
 	@ApiResponses(value = {
-	        @ApiResponse(code = 200, message = "Operation Successful"),
+	        @ApiResponse(code = 200, message = "OK"),
 	        @ApiResponse(code = 400, message = "Invalid Input: Please pass numeric value to get proper result.")
 	}
 	)
 	@GetMapping("/api/TriangleType")
 	public ResponseEntity<Object> getTriangleType(@RequestParam Object a, @RequestParam Object b, @RequestParam Object c){
-		
+		LOGGER.info(marker, "IN: TriangleType Controller {}","");
 		try{
 			//Casting Object into Long to check input
 			Integer inputA = new Integer(a.toString());//side a
@@ -42,11 +46,13 @@ public class TriangleTypeController {
 			if(inputA<0 ||
 					inputB<0 ||
 					inputC<0){//check for null and negative values.
-				throw new InvalidInputException("Invalid Input: Input negative.Please pass numeric value to get proper result");
+				LOGGER.error(ErrorMessages.INPUT_ERROR_NEGATIVE);
+				throw new InvalidInputException(ErrorMessages.INPUT_ERROR_NEGATIVE);
 				
 			}
 		}catch(NumberFormatException nfe){
-			throw new InvalidInputException("Invalid Input: Please pass numeric value to get proper result");
+			LOGGER.error(nfe.getMessage(),  nfe);
+			throw new InvalidInputException(ErrorMessages.INPUT_ERROR_NON_NUMERIC);
 		}
 		
 		
