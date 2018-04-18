@@ -7,6 +7,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.nio.charset.Charset;
 
@@ -21,7 +22,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.jayway.jsonpath.internal.Utils;
+import com.hcl.assessment.controller.utils.MakeOneArrayUtils;
 
 
 
@@ -102,15 +103,27 @@ public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.AP
 	
 	@Test
 	public//
-	void privateConstructorTest() throws Exception {
-	    final Constructor<?>[] constructors = Utils.class.getDeclaredConstructors();
+	void privateConstructorTest() {
+	    final Constructor<?>[] constructors = MakeOneArrayUtils.class.getDeclaredConstructors();
 	    // check that all constructors are 'private':
 	    for (final Constructor<?> constructor : constructors) {
 	        assertTrue(Modifier.isPrivate(constructor.getModifiers()));
 	    }        
 	    // call the private constructor:
 	    constructors[0].setAccessible(true);
-	    constructors[0].newInstance((Object[]) null);
+	    try {
+			constructors[0].newInstance((Object[]) null);
+		} catch (InstantiationException e) {
+			
+		} catch (IllegalAccessException e) {
+			
+		} catch (IllegalArgumentException e) {
+			
+		} catch (InvocationTargetException e) {
+			
+		} catch(UnsupportedOperationException e){
+		
+		}
 	}
 	
 	
