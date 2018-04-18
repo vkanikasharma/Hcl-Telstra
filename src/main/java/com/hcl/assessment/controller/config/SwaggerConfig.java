@@ -19,6 +19,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+	/**
+	 * Generates API documentation.
+	 * @return
+	 */
     @Bean
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -32,7 +36,7 @@ public class SwaggerConfig {
      * 
      */
     private ApiInfo metaData() {
-        ApiInfo apiInfo = new ApiInfo(
+        return new ApiInfo(
                 "Spring Boot REST API",
                 "Spring Boot REST API for: Fibonacci Series, Reverse Words, Triangle Types and Make One Array",
                 "1.0",
@@ -40,6 +44,5 @@ public class SwaggerConfig {
                 new Contact("Kanika Sharma", "", "kanika.sharma@hcl.com"),
                "Apache License Version 2.0",
                 "https://www.apache.org/licenses/LICENSE-2.0");
-        return apiInfo;
     }
 }
